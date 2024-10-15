@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Java I/O Streams Hierarchy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        li::before {
+            content: "•";
+            color: #007bff;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .stream {
+            cursor: pointer;
+            color: #0056b3;
+        }
+        .stream:hover {
+            text-decoration: underline;
+        }
+        #info-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Java I/O Streams Hierarchy</h1>
+    <div id="tree">
+        <ul>
+            <li><span class="stream" data-info="Abstract base class for byte input streams" data-type="Byte Stream">InputStream (abstract)</span>
+                <ul>
+                    <li><span class="stream" data-info="Reads bytes from a file in the file system" data-type="Byte Stream">FileInputStream</span></li>
+                    <li><span class="stream" data-info="Reads bytes from a byte array" data-type="Byte Stream">ByteArrayInputStream</span></li>
+                    <li><span class="stream" data-info="Base class for filtered input streams" data-type="Byte Stream">FilterInputStream</span>
+                        <ul>
+                            <li><span class="stream" data-info="Adds buffering to input streams for improved performance" data-type="Byte Stream">BufferedInputStream</span></li>
+                            <li><span class="stream" data-info="Reads primitive Java data types from an underlying input stream" data-type="Byte Stream">DataInputStream</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="stream" data-info="Deserializes primitive data and objects from an input stream" data-type="Byte Stream">ObjectInputStream</span></li>
+                    <li><span class="stream" data-info="Reads bytes from a piped output stream" data-type="Byte Stream">PipedInputStream</span></li>
+                </ul>
+            </li>
+            <li><span class="stream" data-info="Abstract base class for byte output streams" data-type="Byte Stream">OutputStream (abstract)</span>
+                <ul>
+                    <li><span class="stream" data-info="Writes bytes to a file in the file system" data-type="Byte Stream">FileOutputStream</span></li>
+                    <li><span class="stream" data-info="Writes bytes to a byte array" data-type="Byte Stream">ByteArrayOutputStream</span></li>
+                    <li><span class="stream" data-info="Base class for filtered output streams" data-type="Byte Stream">FilterOutputStream</span>
+                        <ul>
+                            <li><span class="stream" data-info="Adds buffering to output streams for improved performance" data-type="Byte Stream">BufferedOutputStream</span></li>
+                            <li><span class="stream" data-info="Writes primitive Java data types to an underlying output stream" data-type="Byte Stream">DataOutputStream</span></li>
+                            <li><span class="stream" data-info="Prints formatted representations of objects to a text-output stream" data-type="Byte Stream">PrintStream</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="stream" data-info="Serializes primitive data and objects to an output stream" data-type="Byte Stream">ObjectOutputStream</span></li>
+                    <li><span class="stream" data-info="Writes bytes to a piped input stream" data-type="Byte Stream">PipedOutputStream</span></li>
+                </ul>
+            </li>
+            <li><span class="stream" data-info="Abstract base class for reading character streams" data-type="Character Stream">Reader (abstract)</span>
+                <ul>
+                    <li><span class="stream" data-info="Reads text from a character-input stream, buffering characters for efficient reading" data-type="Character Stream">BufferedReader</span></li>
+                    <li><span class="stream" data-info="Bridge from byte streams to character streams" data-type="Character Stream">InputStreamReader</span>
+                        <ul>
+                            <li><span class="stream" data-info="Reads characters from files in the file system" data-type="Character Stream">FileReader</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="stream" data-info="Reads characters from a string" data-type="Character Stream">StringReader</span></li>
+                </ul>
+            </li>
+            <li><span class="stream" data-info="Abstract base class for writing character streams" data-type="Character Stream">Writer (abstract)</span>
+                <ul>
+                    <li><span class="stream" data-info="Writes text to a character-output stream, buffering characters for efficient writing" data-type="Character Stream">BufferedWriter</span></li>
+                    <li><span class="stream" data-info="Bridge from character streams to byte streams" data-type="Character Stream">OutputStreamWriter</span>
+                        <ul>
+                            <li><span class="stream" data-info="Writes characters to files in the file system" data-type="Character Stream">FileWriter</span></li>
+                        </ul>
+                    </li>
+                    <li><span class="stream" data-info="Prints formatted representations of objects to a text-output stream" data-type="Character Stream">PrintWriter</span></li>
+                    <li><span class="stream" data-info="Writes characters to a string buffer" data-type="Character Stream">StringWriter</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="info-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoBox = document.getElementById('info-box');
+            const streams = document.querySelectorAll('.stream');
+
+            streams.forEach(stream => {
+                stream.addEventListener('click', function() {
+                    const info = this.getAttribute('data-info');
+                    const type = this.getAttribute('data-type');
+                    infoBox.innerHTML = `<strong>${this.textContent}</strong><br>Type: ${type}<br>${info}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
