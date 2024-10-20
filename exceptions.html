@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Java Exceptions Hierarchy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .throwable-section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .categories {
+            display: flex;
+            gap: 20px;
+        }
+        .category {
+            flex: 1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .checked {
+            background-color: #e8f5e9;
+        }
+        .unchecked {
+            background-color: #ffebee;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .exception {
+            cursor: pointer;
+            color: #0056b3;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .exception:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+        #info-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .legend {
+            margin-bottom: 20px;
+        }
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete Java Exceptions Hierarchy</h1>
+    
+    <div class="legend">
+        <div class="legend-item checked">Checked Exceptions</div>
+        <div class="legend-item unchecked">Unchecked Exceptions</div>
+    </div>
+
+    <div class="container">
+        <div class="throwable-section">
+            <span class="exception" data-info="The root class of the Java exception hierarchy. All exceptions and errors inherit from this class.">Throwable</span>
+            <div class="categories">
+                <div class="category checked">
+                    <h2>Checked Exceptions</h2>
+                    <ul>
+                        <li><span class="exception" data-info="The superclass of all checked exceptions. These exceptions must be declared in a method or constructor's throws clause or handled by a try-catch block.">Exception</span>
+                            <ul>
+                                <li><span class="exception" data-info="Signals that an I/O exception of some sort has occurred. This class is the general class of exceptions produced by failed or interrupted I/O operations.">IOException</span>
+                                    <ul>
+                                        <li><span class="exception" data-info="Signals that an End of File has been reached unexpectedly during input.">EOFException</span></li>
+                                        <li><span class="exception" data-info="Signals that an attempt to open the specified file has failed. This typically happens when the file does not exist or cannot be found.">FileNotFoundException</span></li>
+                                        <li><span class="exception" data-info="Signals that an I/O operation has been interrupted. Primarily used with socket operations.">InterruptedIOException</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="exception" data-info="Thrown when an application tries to load a class through its string name using Class.forName() but no definition for the class with the specified name could be found.">ClassNotFoundException</span></li>
+                                <li><span class="exception" data-info="Thrown by the JDBC API when a database access error occurs. Contains information about the SQL error including SQL state and vendor-specific error codes.">SQLException</span></li>
+                                <li><span class="exception" data-info="Thrown when an application tries to create an instance of a class using Class.newInstance(), but the specified class object cannot be instantiated because it is an abstract class or interface.">InstantiationException</span></li>
+                                <li><span class="exception" data-info="Thrown when a thread is waiting, sleeping, or doing some processing, and the thread is interrupted. Often used for concurrent programming.">InterruptedException</span></li>
+                                <li><span class="exception" data-info="Signals that the Java Virtual Machine cannot find an appropriate constructor to be called.">NoSuchMethodException</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="category unchecked">
+                    <h2>Unchecked Exceptions</h2>
+                    <ul>
+                        <li><span class="exception" data-info="The superclass of all unchecked exceptions. These exceptions do not need to be declared or caught. They occur at runtime and are usually programming errors.">RuntimeException</span>
+                            <ul>
+                                <li><span class="exception" data-info="Thrown to indicate that an array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of the array.">ArrayIndexOutOfBoundsException</span></li>
+                                <li><span class="exception" data-info="Thrown when an application attempts to use a null reference in a case where an object is required. These exceptions commonly indicate programming errors.">NullPointerException</span></li>
+                                <li><span class="exception" data-info="Thrown to indicate that the code has attempted to cast an object to a subclass of which it is not an instance.">ClassCastException</span></li>
+                                <li><span class="exception" data-info="Thrown when an exceptional arithmetic condition has occurred. For example, dividing by zero throws this exception.">ArithmeticException</span></li>
+                                <li><span class="exception" data-info="Thrown to indicate that a method has been passed an illegal or inappropriate argument.">IllegalArgumentException</span>
+                                    <ul>
+                                        <li><span class="exception" data-info="Thrown to indicate that the application has attempted to convert a string to a numeric type, but the string does not have the appropriate format.">NumberFormatException</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="exception" data-info="Signals that a method has been invoked at an illegal or inappropriate time. Often used when the state of an object does not allow the requested operation.">IllegalStateException</span></li>
+                                <li><span class="exception" data-info="Thrown by String methods to indicate that an index is either negative or greater than the size of the string.">StringIndexOutOfBoundsException</span></li>
+                                <li><span class="exception" data-info="Thrown when attempting to access or modify an empty collection.">NoSuchElementException</span></li>
+                            </ul>
+                        </li>
+                        <li><span class="exception" data-info="The superclass of all errors. Errors represent serious problems that a reasonable application should not try to catch. They usually indicate problems that arise beyond the control of the application.">Error</span>
+                            <ul>
+                                <li><span class="exception" data-info="Thrown when the Java Virtual Machine cannot allocate an object because it is out of memory, and no more memory could be made available by the garbage collector.">OutOfMemoryError</span></li>
+                                <li><span class="exception" data-info="Thrown when a stack overflow occurs because an application recurses too deeply. Often indicates infinite recursion or very deep recursion.">StackOverflowError</span></li>
+                                <li><span class="exception" data-info="Thrown to indicate that the Java Virtual Machine is broken or has run out of resources necessary for it to continue operating.">VirtualMachineError</span></li>
+                                <li><span class="exception" data-info="Thrown when the Java Virtual Machine encounters a serious linkage error, typically when a class has incompatible dependencies.">LinkageError</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-box"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoBox = document.getElementById('info-box');
+            const exceptions = document.querySelectorAll('.exception');
+
+            exceptions.forEach(exception => {
+                exception.addEventListener('click', function() {
+                    const info = this.getAttribute('data-info');
+                    let type = "Base Class";
+                    if (this.closest('.checked')) {
+                        type = "Checked Exception";
+                    } else if (this.closest('.unchecked')) {
+                        type = "Unchecked Exception";
+                    }
+                    
+                    infoBox.innerHTML = `
+                        <strong>${this.textContent}</strong><br>
+                        Type: ${type}<br>
+                        Description: ${info}
+                    `;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
